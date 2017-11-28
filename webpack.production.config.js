@@ -1,21 +1,18 @@
 const webpack = require('webpack');
-var path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
   entry: __dirname+"/src/index.tsx",
   output: {
       filename: "bundle.js",
       path: __dirname + "/dist"
   },
-  watch: true,
+
   // Enable sourcemaps for debugging webpack's output.
   devtool: "eval-source-map",
 
   resolve: {
-    alias: {
-        Components: path.join(__dirname, '..', 'src', 'scripts', 'components')
-    },
-    // Add '.ts' and '.tsx' as resolvable extensions.
-    extensions: [".ts", ".tsx", ".js", ".json"]
+      // Add '.ts' and '.tsx' as resolvable extensions.
+      extensions: [".ts", ".tsx", ".js", ".json"]
   },
 
   module: {
@@ -55,6 +52,8 @@ module.exports = {
     hot: true
   } ,
   plugins: [
-    new webpack.HotModuleReplacementPlugin()//热加载插件
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.optimize.UglifyJsPlugin(),
+    new ExtractTextPlugin("style.css")
   ],
 };
