@@ -40,12 +40,12 @@ module.exports = {
   },
   devServer: {
     contentBase: "./dist/",//本地服务器所加载的页面所在的目录
-    // historyApiFallback: true,//不跳转
-    // inline: true,//实时刷新
+    historyApiFallback: true,//不跳转
+    inline: true,//实时刷新
     port:"9527"
   } ,
   plugins: [
-    // new webpack.HotModuleReplacementPlugin()//热加载插件
-    new HtmlWebPackPlugin({ title: "webCAD" ,template:"./index.html"}),
+    
+    new HtmlWebPackPlugin({ title: "webCAD" ,template:"./index.html"})
   ],
 };
