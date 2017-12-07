@@ -1,0 +1,22 @@
+{
+  "tsimporter.filesToScan": [
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.d.ts"
+  ],
+  //排除
+  "tsimporter.filesToExclude": [],
+  "typescript.tsdk": "node_modules\\typescript\\lib",
+  //格式化设置
+  "editor.tabSize": 4,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.minimap.enabled": true,
+  //格式设置
+  "typescript.format.placeOpenBraceOnNewLineForFunctions": true,
+  "typescript.format.placeOpenBraceOnNewLineForControlBlocks": true,
+  "typescript.referencesCodeLens.enabled": true,
+  "javascript.format.placeOpenBraceOnNewLineForFunctions": true,
+  "javascript.format.enable": true,
+  "html.format.indentInnerHtml": true
+}
