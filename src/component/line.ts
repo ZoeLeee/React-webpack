@@ -8,9 +8,10 @@ export function createLine()
     const SEPARATION = 200;
     const AMOUNTX = 10;
     const AMOUNTY = 10;
-    let camera: THREE.PerspectiveCamera, scene: THREE.Scene, renderer: THREE.CanvasRenderer;
+    let camera: THREE.PerspectiveCamera, scene: THREE.Scene, renderer: THREE.WebGLRenderer;
     function init()
     {
+
         //创建节点
         let separation = 100;
         let amountX = 50;
@@ -24,24 +25,18 @@ export function createLine()
         scene = new THREE.Scene();
 
         //创建渲染器
-        renderer = new THREE.CanvasRenderer();
-        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer = new THREE.WebGLRenderer();
         renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setClearColor(0x000);
         container.appendChild(renderer.domElement);
-        renderer.render(scene, camera);
-
+        document.body.appendChild(container);
         //particles 粒子
 
         const PI2 = Math.PI * 2;
         //材质
-        let material = new THREE.SpriteCanvasMaterial({
+        let material = new THREE.SpriteMaterial({
             color: 0xffffff,
-            program: function (context)
-            {
-                context.beginPath();
-                context.arc(0, 0, 0.5, 0, PI2, true);//描圆
-                context.fill();
-            }
+
         })
         //创建几何体
         let geometry = new THREE.Geometry();
@@ -68,6 +63,7 @@ export function createLine()
         document.addEventListener('touchstart', onDocumentTouchStart, false);
         document.addEventListener('touchmove', onDocumentTouchMove, false);
         window.addEventListener('resize', onWindowResize, false);
+
     }
     function onWindowResize()
     {
@@ -92,7 +88,7 @@ export function createLine()
     }
     function onDocumentTouchMove(event: TouchEvent)
     {
-        console.log(event)
+
         if (event.touches.length == 1)
         {
             event.preventDefault();
