@@ -1,6 +1,7 @@
 import * as React from "react";
 import * as THREE from "Three";
 import { Geometry } from "Three";
+import { setInterval } from "timers";
 // 添加场景
 const scene = new THREE.Scene();
 
@@ -29,14 +30,25 @@ geometry.vertices.push(
     new THREE.Vector3(-10, 0, 0),
     new THREE.Vector3(0, 10, 0)
 );
-let line: any;
+let line = new THREE.Line(geometry, material);
+scene.add(line);
+
+setInterval(() =>
+{
+
+    geometry.vertices.push(
+        new THREE.Vector3(Math.floor(Math.random() * 10), Math.floor(Math.random() * 10), 0)
+    )
+
+    // line.geometry = geometry
+}, 3000)
 document.onclick = function (e)
 {
-    geometry.vertices.push(
-        new THREE.Vector3(e.clientX - window.innerWidth / 2, window.innerHeight / 2 - e.clientY, 0)
-    )
-    line = new THREE.Line(geometry, material);
-    scene.add(line);
+    // geometry.vertices.push(
+    //     new THREE.Vector3(e.clientX - window.innerWidth / 2, window.innerHeight / 2 - e.clientY, 0)
+    // )
+    // line = new THREE.Line(geometry, material);
+    // scene.add(line);
     renderer.render(scene, camera);
 
 }
