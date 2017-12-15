@@ -3,6 +3,7 @@ import * as React from 'react';
 import { createLine } from './component/line';
 import * as THREE from 'Three';
 createLine();
+
 // // 添加场景
 // const scene = new THREE.Scene();
 

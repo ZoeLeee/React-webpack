@@ -1,4 +1,4 @@
-import * as THREE from "Three";
+import * as THREE from 'three';
 export function createLine()
 {
     let mouseX = 0, mouseY = 0;
@@ -8,7 +8,9 @@ export function createLine()
     const SEPARATION = 200;
     const AMOUNTX = 10;
     const AMOUNTY = 10;
-    let camera: THREE.PerspectiveCamera, scene: THREE.Scene, renderer: THREE.CanvasRenderer;
+    let camera: THREE.PerspectiveCamera, scene: THREE.Scene, renderer: THREE.WebGLRenderer;
+    let container = document.createElement('div');
+
     function init()
     {
         //创建节点
@@ -16,7 +18,6 @@ export function createLine()
         let amountX = 50;
         let amountY = 50;
         let particles, particle;
-        let container = document.createElement('div');
         //创建相机
         camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1000);
         camera.position.z = 100;
@@ -24,7 +25,7 @@ export function createLine()
         scene = new THREE.Scene();
 
         //创建渲染器
-        renderer = new THREE.CanvasRenderer();
+        renderer = new THREE.WebGLRenderer();
         renderer.setPixelRatio(window.devicePixelRatio);
         renderer.setSize(window.innerWidth, window.innerHeight);
         container.appendChild(renderer.domElement);
@@ -34,14 +35,9 @@ export function createLine()
 
         const PI2 = Math.PI * 2;
         //材质
-        let material = new THREE.SpriteCanvasMaterial({
+        let material = new THREE.SpriteMaterial({
             color: 0xffffff,
-            program: function (context)
-            {
-                context.beginPath();
-                context.arc(0, 0, 0.5, 0, PI2, true);//描圆
-                context.fill();
-            }
+
         })
         //创建几何体
         let geometry = new THREE.Geometry();
@@ -115,5 +111,8 @@ export function createLine()
 
     init();
     animate();
+
+
+
 }
 
