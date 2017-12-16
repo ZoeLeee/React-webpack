@@ -2,6 +2,9 @@ import * as THREE from 'three';
 // import { Stats } from 'fs';
 require('stats');
 require('dat.gui');
+var DragControls = require('DragControls');
+console.log(123);
+console.log(DragControls);
 let format = function (str: string, ...args: Array<any>)
 {
 
@@ -41,8 +44,8 @@ renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.shadowMap.enabled = true;
 container.appendChild(renderer.domElement);
-// let stats = new Stats();
-// container.appendChild(stats.dom);
+let stats = new Stats();
+container.appendChild(stats.dom);
 var splineHelperObjects: any = [], splineOutline;
 var splinePointsLength = 4;
 var positions: any = [];
@@ -108,17 +111,17 @@ function init()
     {
         cancelHideTransorm();
     });
-    var dragcontrols = new THREE.DragControls(splineHelperObjects, camera, renderer.domElement); //
-    dragcontrols.enabled = false;
-    dragcontrols.addEventListener('hoveron', function (event: any)
-    {
-        transformControl.attach(event.object);
-        cancelHideTransorm();
-    });
-    dragcontrols.addEventListener('hoveroff', function (event: any)
-    {
-        delayHideTransform();
-    });
+    // var dragcontrols = new THREE.DragControls(splineHelperObjects, camera, renderer.domElement); 
+    // dragcontrols.enabled = false;
+    // dragcontrols.addEventListener('hoveron', function (event: any)
+    // {
+    //     transformControl.attach(event.object);
+    //     cancelHideTransorm();
+    // });
+    // dragcontrols.addEventListener('hoveroff', function (event: any)
+    // {
+    //     delayHideTransform();
+    // });
     let hiding: any;
     function delayHideTransform()
     {

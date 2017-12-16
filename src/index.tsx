@@ -4,6 +4,7 @@ import * as THREE from 'Three';
 
 import { DrawLine } from './component/drawLine';
 
+import './component/editorLine';
 // createLine();
 
 

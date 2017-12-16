@@ -19,8 +19,10 @@ module.exports = {
         alias: {
             Components: path.join(__dirname, '..', 'src', 'scripts', 'components'),
             "stats": getpath('./node_modules/three/examples/js/libs/stats.min.js'),
-            "dat.gui": getpath('./node_modules/three/examples/js/libs/dat.gui.min.js')
+            "dat.gui": getpath('./node_modules/three/examples/js/libs/dat.gui.min.js'),
+            "DragControls": getpath('./node_modules/three/examples/js/controls/DragControls.js')
         },
+
         // Add '.ts' and '.tsx' as resolvable extensions.
         extensions: [".ts", ".tsx", ".js", ".json"]
     },
@@ -53,7 +55,10 @@ module.exports = {
 
         new HtmlWebPackPlugin({ title: "webCAD", template: "./index.html" }),
         new webpack.ProvidePlugin({
-            Stats: "stats"
+            ReactDOM: 'react-dom',
+            React: 'react',
+            THREE: "three"
+
         }),
     ],
 };
