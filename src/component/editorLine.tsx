@@ -2,9 +2,11 @@ import * as THREE from 'three';
 // import { Stats } from 'fs';
 require('stats');
 require('dat.gui');
-var DragControls = require('DragControls');
-console.log(123);
-console.log(DragControls);
+// import { OrbitControls } from 'three-orbitcontrols-ts';
+import 'three/examples/js/controls/OrbitControls';
+import 'three/examples/js/controls/TransformControls';
+import 'three/examples/js/controls/DragControls';
+// import DragControls from 'three-dragcontrols';
 let format = function (str: string, ...args: Array<any>)
 {
 
@@ -15,7 +17,7 @@ let format = function (str: string, ...args: Array<any>)
     return str;
 };
 // let container=document.createElement('div');
-let container = document.getElementById('app');
+let container = document.getElementById('example');
 
 let scene = new THREE.Scene();
 scene.background = new THREE.Color(0xf0f0f0);
@@ -44,8 +46,8 @@ renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.shadowMap.enabled = true;
 container.appendChild(renderer.domElement);
-let stats = new Stats();
-container.appendChild(stats.dom);
+// let stats = new Stats();
+// container.appendChild(stats.dom);
 var splineHelperObjects: any = [], splineOutline;
 var splinePointsLength = 4;
 var positions: any = [];
@@ -65,6 +67,8 @@ var params = {
     removePoint: removePoint,
     exportSpline: exportSpline
 };
+init();
+animate();
 function init()
 {
     let planeGeometry = new THREE.PlaneGeometry(2000, 2000);
@@ -88,8 +92,7 @@ function init()
     //scene.add( axes );
     // 
     // Controls
-    let controls = new THREE.OrbitControls(camera, renderer.domElement);
-    // controls.damping = 0.2;
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
     controls.addEventListener('change', render);
     controls.addEventListener('start', function ()
     {
@@ -101,6 +104,8 @@ function init()
     });
     transformControl = new THREE.TransformControls(camera, renderer.domElement);
     transformControl.addEventListener('change', render);
+    transformControl.attach(plane);
+
     scene.add(transformControl);
     // Hiding transform situation is a little in a mess :()
     transformControl.addEventListener('change', function (e: any)
@@ -111,7 +116,7 @@ function init()
     {
         cancelHideTransorm();
     });
-    // var dragcontrols = new THREE.DragControls(splineHelperObjects, camera, renderer.domElement); 
+    // var dragcontrols = new THREE.DragControls(splineHelperObjects, camera, renderer.domElement);
     // dragcontrols.enabled = false;
     // dragcontrols.addEventListener('hoveron', function (event: any)
     // {
@@ -278,7 +283,7 @@ function animate()
     requestAnimationFrame(animate);
     render();
     // stats.update();
-    transformControl.update();
+    // transformControl.update();
 }
 function render()
 {

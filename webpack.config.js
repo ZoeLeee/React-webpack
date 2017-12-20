@@ -6,6 +6,7 @@ function getpath(fileName)
 {
     return path.resolve(__dirname, fileName);
 }
+
 module.exports = {
     entry: __dirname + "/src/index.tsx",
     output: {
@@ -20,7 +21,7 @@ module.exports = {
             Components: path.join(__dirname, '..', 'src', 'scripts', 'components'),
             "stats": getpath('./node_modules/three/examples/js/libs/stats.min.js'),
             "dat.gui": getpath('./node_modules/three/examples/js/libs/dat.gui.min.js'),
-            "DragControls": getpath('./node_modules/three/examples/js/controls/DragControls.js')
+            "three-OrbitControls": getpath('./node_modules/three/examples/js/controls/OrbitControls.js')
         },
 
         // Add '.ts' and '.tsx' as resolvable extensions.

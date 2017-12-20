@@ -10,7 +10,7 @@ import './component/editorLine';
 
 
 
-ReactDOM.render(
-    <DrawLine />,
-    document.getElementById("example")
-);
+// ReactDOM.render(
+//     <DrawLine />,
+//     document.getElementById("example")
+// );

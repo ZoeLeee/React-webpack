@@ -17,7 +17,9 @@
     "@types/three": "^0.84.33",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
-    "three": "^0.88.0"
+    "three": "^0.88.0",
+    "three-dragcontrols": "^0.88.1",
+    "three-orbitcontrols-ts": "^0.1.2"
   },
   "devDependencies": {
     "@types/stats.js": "^0.17.0",
