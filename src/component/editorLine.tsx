@@ -4,6 +4,11 @@ let Stats = require('stats');
 console.log(Stats);
 Stats();
 require('dat.gui');
+// import { OrbitControls } from 'three-orbitcontrols-ts';
+import 'three/examples/js/controls/OrbitControls';
+import 'three/examples/js/controls/TransformControls';
+import 'three/examples/js/controls/DragControls';
+// import DragControls from 'three-dragcontrols';
 let format = function (str: string, ...args: Array<any>)
 {
 
@@ -64,6 +69,10 @@ var params = {
     exportSpline: exportSpline
 };
 init();
+<<<<<<< HEAD
+=======
+animate();
+>>>>>>> 9ba2a0e85263831aea0015971b5c2ba47a726c8d
 function init()
 {
     let planeGeometry = new THREE.PlaneGeometry(2000, 2000);
@@ -87,8 +96,7 @@ function init()
     //scene.add( axes );
     // 
     // Controls
-    let controls = new THREE.OrbitControls(camera, renderer.domElement);
-    // controls.damping = 0.2;
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
     controls.addEventListener('change', render);
     controls.addEventListener('start', function ()
     {
@@ -100,6 +108,8 @@ function init()
     });
     transformControl = new THREE.TransformControls(camera, renderer.domElement);
     transformControl.addEventListener('change', render);
+    transformControl.attach(plane);
+
     scene.add(transformControl);
     // Hiding transform situation is a little in a mess :()
     transformControl.addEventListener('change', function (e: any)
@@ -110,7 +120,11 @@ function init()
     {
         cancelHideTransorm();
     });
+<<<<<<< HEAD
     // var dragcontrols = new THREE.DragControls(splineHelperObjects, camera, renderer.domElement); //
+=======
+    // var dragcontrols = new THREE.DragControls(splineHelperObjects, camera, renderer.domElement);
+>>>>>>> 9ba2a0e85263831aea0015971b5c2ba47a726c8d
     // dragcontrols.enabled = false;
     // dragcontrols.addEventListener('hoveron', function (event: any)
     // {
@@ -277,7 +291,7 @@ function animate()
     requestAnimationFrame(animate);
     render();
     // stats.update();
-    transformControl.update();
+    // transformControl.update();
 }
 function render()
 {

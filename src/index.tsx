@@ -4,12 +4,13 @@ import * as THREE from 'Three';
 
 import { DrawLine } from './component/drawLine';
 
+import './component/editorLine';
 // createLine();
 
 
 
 
-ReactDOM.render(
-    <DrawLine />,
-    document.getElementById("example")
-);
+// ReactDOM.render(
+//     <DrawLine />,
+//     document.getElementById("example")
+// );

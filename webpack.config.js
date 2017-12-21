@@ -6,6 +6,7 @@ function getpath(fileName)
 {
     return path.resolve(__dirname, fileName);
 }
+
 module.exports = {
     entry: __dirname + "/src/index.tsx",
     output: {
@@ -19,8 +20,10 @@ module.exports = {
         alias: {
             Components: path.join(__dirname, '..', 'src', 'scripts', 'components'),
             "stats": getpath('./node_modules/three/examples/js/libs/stats.min.js'),
-            "dat.gui": getpath('./node_modules/three/examples/js/libs/dat.gui.min.js')
+            "dat.gui": getpath('./node_modules/three/examples/js/libs/dat.gui.min.js'),
+            "three-OrbitControls": getpath('./node_modules/three/examples/js/controls/OrbitControls.js')
         },
+
         // Add '.ts' and '.tsx' as resolvable extensions.
         extensions: [".ts", ".tsx", ".js", ".json"]
     },
@@ -53,7 +56,10 @@ module.exports = {
 
         new HtmlWebPackPlugin({ title: "webCAD", template: "./index.html" }),
         new webpack.ProvidePlugin({
-            Stats: "stats"
+            ReactDOM: 'react-dom',
+            React: 'react',
+            THREE: "three"
+
         }),
     ],
 };
