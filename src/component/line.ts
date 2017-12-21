@@ -13,6 +13,7 @@ export function createLine()
 
     function init()
     {
+
         //创建节点
         let separation = 100;
         let amountX = 50;
@@ -28,9 +29,9 @@ export function createLine()
         renderer = new THREE.WebGLRenderer();
         renderer.setPixelRatio(window.devicePixelRatio);
         renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setClearColor(0x000);
         container.appendChild(renderer.domElement);
-        renderer.render(scene, camera);
-
+        document.body.appendChild(container);
         //particles 粒子
 
         const PI2 = Math.PI * 2;
@@ -64,6 +65,7 @@ export function createLine()
         document.addEventListener('touchstart', onDocumentTouchStart, false);
         document.addEventListener('touchmove', onDocumentTouchMove, false);
         window.addEventListener('resize', onWindowResize, false);
+
     }
     function onWindowResize()
     {
@@ -88,7 +90,7 @@ export function createLine()
     }
     function onDocumentTouchMove(event: TouchEvent)
     {
-        console.log(event)
+
         if (event.touches.length == 1)
         {
             event.preventDefault();
