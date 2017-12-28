@@ -2,11 +2,11 @@ import * as THREE from 'three';
 // import { Stats } from 'fs';
 require('stats');
 require('dat.gui');
-// import { OrbitControls } from 'three-orbitcontrols-ts';
 import 'three/examples/js/controls/OrbitControls';
 import 'three/examples/js/controls/TransformControls';
-import 'three/examples/js/controls/DragControls';
-// import DragControls from 'three-dragcontrols';
+
+import * as DragControls from 'three/examples/js/controls/DragControls';
+
 let format = function (str: string, ...args: Array<any>)
 {
 
@@ -116,17 +116,17 @@ function init()
     {
         cancelHideTransorm();
     });
-    // var dragcontrols = new THREE.DragControls(splineHelperObjects, camera, renderer.domElement);
-    // dragcontrols.enabled = false;
-    // dragcontrols.addEventListener('hoveron', function (event: any)
-    // {
-    //     transformControl.attach(event.object);
-    //     cancelHideTransorm();
-    // });
-    // dragcontrols.addEventListener('hoveroff', function (event: any)
-    // {
-    //     delayHideTransform();
-    // });
+    var dragcontrols = new THREE.DragControls(splineHelperObjects, camera, renderer.domElement);
+    dragcontrols.enabled = false;
+    dragcontrols.addEventListener('hoveron', function (event: any)
+    {
+        transformControl.attach(event.object);
+        cancelHideTransorm();
+    });
+    dragcontrols.addEventListener('hoveroff', function (event: any)
+    {
+        delayHideTransform();
+    });
     let hiding: any;
     function delayHideTransform()
     {
