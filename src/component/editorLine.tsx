@@ -68,10 +68,6 @@ var params = {
     exportSpline: exportSpline
 };
 init();
-<<<<<<< HEAD
-=======
-animate();
->>>>>>> 9ba2a0e85263831aea0015971b5c2ba47a726c8d
 function init()
 {
     let planeGeometry = new THREE.PlaneGeometry(2000, 2000);
@@ -119,11 +115,7 @@ function init()
     {
         cancelHideTransorm();
     });
-<<<<<<< HEAD
     // var dragcontrols = new THREE.DragControls(splineHelperObjects, camera, renderer.domElement); //
-=======
-    // var dragcontrols = new THREE.DragControls(splineHelperObjects, camera, renderer.domElement);
->>>>>>> 9ba2a0e85263831aea0015971b5c2ba47a726c8d
     // dragcontrols.enabled = false;
     // dragcontrols.addEventListener('hoveron', function (event: any)
     // {
