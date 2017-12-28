@@ -1,4 +1,4 @@
-import * as THREE from "Three";
+import * as THREE from 'three';
 export function createLine()
 {
     let mouseX = 0, mouseY = 0;
@@ -9,6 +9,8 @@ export function createLine()
     const AMOUNTX = 10;
     const AMOUNTY = 10;
     let camera: THREE.PerspectiveCamera, scene: THREE.Scene, renderer: THREE.WebGLRenderer;
+    let container = document.createElement('div');
+
     function init()
     {
 
@@ -17,7 +19,6 @@ export function createLine()
         let amountX = 50;
         let amountY = 50;
         let particles, particle;
-        let container = document.createElement('div');
         //创建相机
         camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1000);
         camera.position.z = 100;
@@ -26,6 +27,7 @@ export function createLine()
 
         //创建渲染器
         renderer = new THREE.WebGLRenderer();
+        renderer.setPixelRatio(window.devicePixelRatio);
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.setClearColor(0x000);
         container.appendChild(renderer.domElement);
@@ -111,5 +113,8 @@ export function createLine()
 
     init();
     animate();
+
+
+
 }
 

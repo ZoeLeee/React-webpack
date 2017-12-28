@@ -1,6 +1,8 @@
 import * as THREE from 'three';
 // import { Stats } from 'fs';
-require('stats');
+let Stats = require('stats');
+console.log(Stats);
+Stats();
 require('dat.gui');
 import 'three/examples/js/controls/OrbitControls';
 import 'three/examples/js/controls/TransformControls';
@@ -17,6 +19,7 @@ let format = function (str: string, ...args: Array<any>)
 };
 // let container=document.createElement('div');
 let container = document.getElementById('example');
+console.log(container);
 
 let scene = new THREE.Scene();
 scene.background = new THREE.Color(0xf0f0f0);
@@ -28,15 +31,13 @@ scene.add(camera);
 scene.add(new THREE.AmbientLight(0xf0f0f0));
 
 let light = new THREE.SpotLight(0xffffff, 1.5);
-
 light.position.set(0, 1500, 200);
-
 light.castShadow = true;
 light.shadow.bias = -0.0000222;
 light.shadow.mapSize.width = 1024;
 light.shadow.mapSize.height = 1024;
-
 scene.add(light);
+
 //聚光灯
 let spotlight = light;
 // 渲染器
@@ -45,8 +46,8 @@ renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.shadowMap.enabled = true;
 container.appendChild(renderer.domElement);
-// let stats = new Stats();
-// container.appendChild(stats.dom);
+let stats = new Stats();
+container.appendChild(stats.dom);
 var splineHelperObjects: any = [], splineOutline;
 var splinePointsLength = 4;
 var positions: any = [];
@@ -67,7 +68,10 @@ var params = {
     exportSpline: exportSpline
 };
 init();
+<<<<<<< HEAD
+=======
 animate();
+>>>>>>> 9ba2a0e85263831aea0015971b5c2ba47a726c8d
 function init()
 {
     let planeGeometry = new THREE.PlaneGeometry(2000, 2000);
@@ -115,7 +119,11 @@ function init()
     {
         cancelHideTransorm();
     });
+<<<<<<< HEAD
+    // var dragcontrols = new THREE.DragControls(splineHelperObjects, camera, renderer.domElement); //
+=======
     // var dragcontrols = new THREE.DragControls(splineHelperObjects, camera, renderer.domElement);
+>>>>>>> 9ba2a0e85263831aea0015971b5c2ba47a726c8d
     // dragcontrols.enabled = false;
     // dragcontrols.addEventListener('hoveron', function (event: any)
     // {
