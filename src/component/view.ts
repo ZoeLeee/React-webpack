@@ -19,8 +19,8 @@ export class View
     InitCamera()
     {
         this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
-        this.camera.position.x = -30;
-        this.camera.position.y = 40;
+        this.camera.position.x = 0;
+        this.camera.position.y = 0;
         this.camera.position.z = 30;
         this.camera.lookAt(this.scene.position);
         this.scene.add(this.camera);

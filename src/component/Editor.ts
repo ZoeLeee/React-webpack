@@ -1,6 +1,7 @@
 import { View } from "./view";
 import * as THREE from "Three";
 import { Geometry } from "Three";
+import { Axes } from './axes';
 
 export class Editor
 {
@@ -11,18 +12,22 @@ export class Editor
     cube: THREE.Mesh;
     sphere: THREE.Mesh;
     step: number;
+    axes: Axes;
     constructor()
     {
         this.step = 0;
         this.view = new View();
+        this.axes = new Axes(this.view);
+
         this.Add();
     }
     Add()
     {
-        this.CreatePlane();
-        this.CreateLight();
-        this.CreateGeo();
+        // this.CreatePlane();
+        // this.CreateLight();
+        // this.CreateGeo();
         this.Animate();
+
     }
     CreatePlane()
     {
