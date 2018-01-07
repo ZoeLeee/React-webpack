@@ -27,16 +27,18 @@ export class Editor
     CreatePlane()
     {
         let planeGeometry = new THREE.PlaneGeometry(60, 20, 1, 1);
-        let planeMatrial = new THREE.MeshLambertMaterial({
-            color: 0xffffff
+        let texture = new THREE.TextureLoader().load('texture/Tulips.jpg');
+        let planeMatrial = new THREE.MeshBasicMaterial({
+            // color: 0xffffff,
+            map: texture
         })
         this.plane = new THREE.Mesh(planeGeometry, planeMatrial);
         this.view.scene.add(this.plane);
-        this.plane.rotation.x = -0.5 * Math.PI;
-        this.plane.position.x = 15;
+        this.plane.rotation.x = -0.25 * Math.PI;
+        // this.plane.rotation.y = -0.5 * Math.PI;
+        this.plane.position.x = 20;
         this.plane.position.y = 0;
         this.plane.position.z = 0;
-        this.view.Render();
     }
     CreateLight()
     {
@@ -46,7 +48,6 @@ export class Editor
         this.spotLight.position.set(-40, 40, 50);
         this.spotLight.castShadow = true;
         this.view.scene.add(this.spotLight);
-
     }
     CreateGeo()
     {
